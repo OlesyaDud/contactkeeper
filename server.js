@@ -1,7 +1,13 @@
-// entry point to backend
 const express = require('express');
+const connectDB = require('./config/db');
+
 // initilize express into a var called app
 const app = express();
+
+connectDB();
+
+// init middleware -lets except body data
+app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.json({ msg: 'Welcome to my App' }));
 
